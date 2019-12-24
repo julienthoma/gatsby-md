@@ -22,7 +22,7 @@ const Layout = ({ data }) => {
 
 export const query = graphql`
   query HomepageQuery {
-    allSitePage(filter: {context: {pageType: {eq: "knowledge"}}}) {
+    allSitePage(filter: {context: {pageType: {ne: null}}}) {
       edges {
         node {
           id
