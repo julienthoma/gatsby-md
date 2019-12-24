@@ -6,7 +6,9 @@ const Layout = ({ data }) => {
   console.log(data);
   const { edges } = data.allSitePage;
   return (
-    <div>
+    <div style={{
+      fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'
+    }}>
       <Header />
       {edges.map(edge => {
         const { markdownTitle, pathSlug } = edge.node.context;
