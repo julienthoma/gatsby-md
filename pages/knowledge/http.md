@@ -1,9 +1,0 @@
----
----
-
-# HTTP
-## Response Codes
-### 301 - MOVED PERMANENTLY
-### 302 - MOVED TEMPORARILY
-### 499 - CLIENT CLOSED REQUEST
-### 304 - NOT MODIFIED

@@ -3,13 +3,14 @@ import { graphql } from 'gatsby';
 import gatsbyTheme from '../markdown-themes/gatsby-style';
 import ReadingLayout from '../layout/reading-layout';
 import { MDXProvider } from '@mdx-js/react';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
-const Template = ({ data: { mdx } }) => {
+const Template = ({ children, data }) => {
   return (
     <ReadingLayout>
-      <MDXProvider components={gatsbyTheme}>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+      <MDXProvider
+        components={gatsbyTheme}
+      >
+        {children}
       </MDXProvider>
     </ReadingLayout>
   );
@@ -17,10 +18,12 @@ const Template = ({ data: { mdx } }) => {
 
 export default Template;
 
-export const pageQuery = graphql`
-  query($id: String!) {
-    mdx(id: { eq: $id }) {
-      body
-    }
-  }
-`;
+// export const query = graphql`
+//   query($id: String!) {
+//     mdx(id: { eq: $id }) {
+//       frontmatter {
+//         title
+//       }
+//     }
+//   }
+// `;

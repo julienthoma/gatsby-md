@@ -5,42 +5,35 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
+            id
+            fileAbsolutePath
             frontmatter {
               path
-              title
-              tags
             }
-            html
-            fileAbsolutePath
           }
         }
       }
     }
   `);
-  const pageData = result.data.allMarkdownRemark.edges;
-  createKnowledgePages(createPage, pageData);
+  createKnowledgePages(createPage, result.data.allMdx.edges);
 };
 
-function createKnowledgePages(createPage, markdownSitesData) {
-  markdownSitesData.forEach(({ node }) => {
+function createKnowledgePages(createPage, edges) {
+  edges.forEach(({ node }) => {
     const shortFilePath = getPathFromFileName(node.fileAbsolutePath);
     const type = getType(shortFilePath);
     const path = node.frontmatter.path ? node.frontmatter.path : shortFilePath;
-    const { title, tags } = node.frontmatter;
-    const html = node.html;
     const template = getTemplate(type);
 
     createPage({
       path,
       component: template,
       context: {
+        id: node.id,
         pathSlug: path,
-        markdownTitle: title || path,
-        markdownTags: tags || [],
-        markdownHtml: html,
         pageType: type,
       },
     });
@@ -48,7 +41,7 @@ function createKnowledgePages(createPage, markdownSitesData) {
 }
 
 function getPathFromFileName(absolutePath) {
-  return absolutePath.split('/pages')[1].split('.md')[0];
+  return absolutePath.split('/content')[1].split('.mdx')[0];
 }
 
 function getType(shortFilePath) {
@@ -63,7 +56,7 @@ function getType(shortFilePath) {
 
 function getTemplate(type) {
   const markdownSitePathTemplates = {
-    knowledge: 'src/templates/knowledge.js',
+    home: 'src/templates/default.js',
     default: 'src/templates/default.js'
   };
 

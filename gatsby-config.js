@@ -4,14 +4,27 @@ module.exports = {
     description: 'Julien Thoma Stuff'
   },
   plugins: [
-    `gatsby-transformer-remark`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/pages`
+        name: `home`,
+        path: `${__dirname}/content/home`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          { resolve: 'gatsby-remark-copy-linked-files' },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200
+            }
+          }
+        ]
       }
     }
-
   ]
-}
+};

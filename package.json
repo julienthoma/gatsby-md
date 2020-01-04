@@ -14,7 +14,15 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.5.3",
+    "@mdx-js/react": "^1.5.3",
+    "antd": "^3.26.5",
+    "evergreen-ui": "^4.21.5",
     "gatsby": "^2.18.12",
+    "gatsby-plugin-mdx": "^1.0.64",
+    "gatsby-plugin-sharp": "^2.3.10",
+    "gatsby-remark-copy-linked-files": "^2.1.33",
+    "gatsby-remark-images": "^3.1.39",
     "gatsby-source-filesystem": "^2.1.43",
     "gatsby-transformer-remark": "^2.6.45",
     "react": "^16.12.0",

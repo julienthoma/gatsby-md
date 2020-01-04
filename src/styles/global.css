@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+body {
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
